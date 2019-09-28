@@ -4,25 +4,23 @@ import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class TestArenaHomePage {
+public class TestArenaHomePage extends BasePage {
 
-    private WebDriver driver;
-
-    public TestArenaHomePage(WebDriver driver) {
-        this.driver = driver;
-    }
-
+    @FindBy(id = "email")
     private WebElement email;
+
+    @FindBy(id = "password")
     private WebElement password;
+
+    @FindBy(id = "login")
     private WebElement login;
 
-    public void initializeElements() {
-        email = driver.findElement(By.id("email"));
-        password = driver.findElement(By.id("password"));
-        login = driver.findElement(By.id("login"));
+    public TestArenaHomePage(WebDriver driver) {
+        super(driver);
     }
 
     public void attemptLogin(String loginText, String passwordText) {

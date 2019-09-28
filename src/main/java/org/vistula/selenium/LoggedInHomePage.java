@@ -6,12 +6,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class LoggedInHomePage {
-
-    private WebDriver driver;
+public class LoggedInHomePage extends BasePage {
 
     public LoggedInHomePage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public void verifyIsLoaded() {

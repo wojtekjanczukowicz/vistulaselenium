@@ -17,7 +17,6 @@ public class ArenaTest extends BaseTest {
     public void openTestArena() {
         driver.get("http://demo.testarena.pl/zaloguj");
         testArenaHomePage = new TestArenaHomePage(driver);
-        testArenaHomePage.initializeElements();
     }
 
     @Test
