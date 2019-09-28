@@ -1,4 +1,4 @@
-package org.vistula.selenium.test.part3;
+package org.vistula.selenium.test.pop;
 
 import org.junit.After;
 import org.junit.Before;

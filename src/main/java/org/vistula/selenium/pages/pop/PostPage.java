@@ -1,4 +1,4 @@
-package org.vistula.selenium.pages.part3;
+package org.vistula.selenium.pages.pop;
 
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
