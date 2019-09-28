@@ -48,4 +48,21 @@ public class ArenaTest {
         Assertions.assertThat(driver.getTitle()).contains("Kokpit");
     }
 
+    @Test
+    public void wrongLoginTest() {
+        driver.get("http://demo.testarena.pl/zaloguj");
+        WebElement email = driver.findElement(By.id("email"));
+        WebElement password = driver.findElement(By.id("password"));
+        WebElement login = driver.findElement(By.id("login"));
+
+        email.sendKeys("administrator@testarena.pl");
+        password.sendKeys("wrongPassword");
+        login.click();
+
+        new WebDriverWait(driver, 3)
+                .until(ExpectedConditions.presenceOfElementLocated(By.className("login_form_error")));
+
+        Assertions.assertThat(driver.getTitle()).contains("TestArena");
+    }
+
 }
