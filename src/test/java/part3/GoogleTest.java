@@ -1,6 +1,8 @@
 package part3;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -13,6 +15,16 @@ public class GoogleTest {
 
     private WebDriver driver;
 
+    @Before
+    public void setUp() {
+        driver = new ChromeDriver();
+    }
+
+    @After
+    public void tearDown() {
+        driver.quit();
+    }
+
     @BeforeClass
     public static void setDriver() {
         WebDriverManager.chromedriver().setup();
@@ -20,11 +32,9 @@ public class GoogleTest {
 
     @Test
     public void googleSearch() {
-        driver = new ChromeDriver();
         driver.get("https://www.google.pl");
         WebElement searchBox = driver.findElement(By.cssSelector("[title='Search'"));
         searchBox.sendKeys("Vistula University");
         searchBox.sendKeys(Keys.ENTER);
-        driver.quit();
     }
 }
