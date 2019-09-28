@@ -1,46 +1,27 @@
 package org.vistula.selenium.test.part1;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.assertj.core.api.Assertions;
-import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class ArenaTest {
-
-    private WebDriver driver;
-
-    @BeforeClass
-    public static void setDriver() {
-        WebDriverManager.chromedriver().setup();
-    }
+public class ArenaTest extends BaseTest {
 
     @Before
-    public void setUp() {
-        driver = new ChromeDriver();
-    }
-
-    @After
-    public void tearDown() {
-        driver.quit();
+    public void openTestArena() {
+        driver.get("http://demo.testarena.pl/zaloguj");
     }
 
     @Test
     public void myFirstSeleniumTest() {
-        driver.get("http://demo.testarena.pl/zaloguj");
         Assertions.assertThat(driver.getTitle()).contains("TestArena");
     }
 
     @Test
     public void myFirstInteractionTest() {
-        driver.get("http://demo.testarena.pl/zaloguj");
         WebElement email = driver.findElement(By.id("email"));
         WebElement password = driver.findElement(By.id("password"));
         WebElement login = driver.findElement(By.id("login"));
@@ -57,7 +38,6 @@ public class ArenaTest {
 
     @Test
     public void wrongLoginTest() {
-        driver.get("http://demo.testarena.pl/zaloguj");
         WebElement email = driver.findElement(By.id("email"));
         WebElement password = driver.findElement(By.id("password"));
         WebElement login = driver.findElement(By.id("login"));
