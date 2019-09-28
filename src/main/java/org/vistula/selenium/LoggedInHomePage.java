@@ -3,13 +3,17 @@ package org.vistula.selenium;
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class LoggedInHomePage extends BasePage {
+public class LoggedInHomePage {
+
+    protected WebDriver driver;
 
     public LoggedInHomePage(WebDriver driver) {
-        super(driver);
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
     public void verifyIsLoaded() {
