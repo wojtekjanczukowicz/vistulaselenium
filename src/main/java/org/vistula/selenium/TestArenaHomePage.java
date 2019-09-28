@@ -1,8 +1,11 @@
 package org.vistula.selenium;
 
+import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TestArenaHomePage {
 
@@ -28,5 +31,14 @@ public class TestArenaHomePage {
         login.click();
     }
 
+    public void verifyErrorMessage() {
+        new WebDriverWait(driver, 3)
+                .until(ExpectedConditions.presenceOfElementLocated(By.className("login_form_error")));
 
+        Assertions.assertThat(driver.getTitle()).contains("TestArena");
+    }
+
+    public void verifyTitle() {
+        Assertions.assertThat(driver.getTitle()).contains("TestArena");
+    }
 }
