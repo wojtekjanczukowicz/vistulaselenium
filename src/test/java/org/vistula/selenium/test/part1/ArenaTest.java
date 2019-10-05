@@ -11,6 +11,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+import java.time.temporal.TemporalUnit;
+import java.util.concurrent.TimeUnit;
+
 public class ArenaTest {
 
     private WebDriver driver;
@@ -44,6 +48,19 @@ public class ArenaTest {
                 .until(ExpectedConditions.presenceOfElementLocated(By.id("footer")));
 
         Assertions.assertThat(driver.getTitle()).contains("Kokpit");
+        driver.quit();
+    }
+
+    @Test
+    public void poleWymaganeTest() {
+        driver = new ChromeDriver();
+        driver.get("http://demo.testarena.pl/zaloguj");
+        WebElement login = driver.findElement(By.id("login"));
+        login.click();
+
+        new WebDriverWait(driver, 3, 250)
+                .until(ExpectedConditions.presenceOfElementLocated
+                        (By.className("login_form_error")));
         driver.quit();
     }
 
